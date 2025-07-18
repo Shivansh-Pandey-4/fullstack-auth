@@ -4,6 +4,9 @@ import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
+import Error from "./Components/Error";
+import Home from "./Components/Home";
+
 
 const App = () => {
     return (
@@ -15,22 +18,27 @@ const App = () => {
 }
 
 const appRouter = createBrowserRouter([
+  {
+     path : "/",
+     element : <App/>,
+     errorElement: <Error/>, 
+     children : [
       {
-        path : "/",
-        element : <App/>,
-        children : [
-              {
-              path : "/signup",
-              element : <Signup/>
-            },
-            {
-              path : "/login",
-              element : <Login/>
-            }
-        ]
-      }
-]);
-
+         path : "/",
+         element : <Home/>
+      },
+      {
+        path : "/login",
+        element : <Login/>
+      },
+      {
+        path : "/signup",
+        element : <Signup/>
+      },
+     ]
+  },
+  
+])
 
 
 

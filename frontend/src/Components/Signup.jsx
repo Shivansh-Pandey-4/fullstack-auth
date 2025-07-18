@@ -36,9 +36,10 @@ const Signup = () =>{
 
 
      return(
-          <div className="flex justify-center ">
 
-        <div className="border-2 m-10 w-3/12 p-3 flex flex-col items-center shadow-xl shadow-amber-900 rounded-xl">
+          <div className="flex justify-center items-center min-h-screen bg-black text-white ">
+
+        <div className="border-2 m-10 w-3/12 p-3 flex flex-col items-center shadow-2xl shadow-amber-500 rounded-xl">
             <h1 className="text-center pb-6 text-3xl">Signup</h1>
 
            <Link to={"/login"}>
@@ -46,32 +47,47 @@ const Signup = () =>{
            </Link>
 
 
-          <div>
+          <form onSubmit={(e) => {
+                 e.preventDefault(); 
+                signupFunction();   
+  }} className="flex flex-col items-center">
+  <input
+    required
+    type="email"
+    placeholder="Email Id"
+    value={signupEmail}
+    onChange={(e) => setSignupEmail(e.target.value)}
+    className="border m-3 h-10 w-70 pl-12"
+  />
 
-               <input className="border m-3 h-10 w-70 pl-12 " type="email" placeholder="Email Id" value={signupEmail} onChange={
-                   (event)=>{
-                       setSignupEmail(event.target.value);
-                    }}/>
-              
-          </div>
-          <div>
+  <input
+    required
+    type="password"
+    placeholder="Password"
+    value={signupPassword}
+    onChange={(e) => setSignupPassword(e.target.value)}
+    className="border m-3 h-10 w-70 pl-12"
+  />
 
-                <input className="border m-3 h-10 w-70 pl-12 " type="password" placeholder="Password" value={signupPassword} onChange={(event)=>{
-                    setSignupPassword(event.target.value);
-                }} />
+  <input
+    required
+    type="text"
+    placeholder="Full Name"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    className="border m-3 h-10 w-70 pl-12"
+  />
 
-          </div>
-           <div>
-
-                <input className="border m-3 h-10 w-70 pl-12 " type="text" placeholder="Full Name" value={name} onChange={(event)=>{
-                    setName(event.target.value);
-                }} />
-
-          </div>
-          <button onClick={signupFunction} className="bg-green-400 text-white font-mono text-xl border-2 border-black py-2 px-7 rounded-2xl cursor-pointer my-4 hover:bg-green-500">Signup</button>
+  <button
+    type="submit"
+    className="bg-green-400 text-white font-mono text-xl border-2 border-black py-2 px-7 rounded-xl cursor-pointer my-4 hover:bg-green-500"
+  >
+    Signup
+  </button>
+</form>
 
         </div>
-                </div>
+    </div>
      )
 }
 
